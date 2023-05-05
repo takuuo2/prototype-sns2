@@ -21,14 +21,31 @@
             <th scope="col">Opinion</th>
           </tr>
           <tbody>
-            <% @books.each do |books| %>
+            <% @books.each do |book| %>
             <tr>
               <td>
-                <%= link_to user_path(books.user.id) do %>
-                  <%= image_tag books.user.get_profile_image(100,100) %></td>
+                <%= link_to user_path(book.user.id) do %>
+                  <%= image_tag book.user.get_profile_image(100,100) %></td>
                 <% end %>
-              <td><%= link_to books.title, book_path(books) %></td>
-              <td><%= books.body %></td>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.body %></td>
+              <td>
+                <% if book.favorited_by?(current_user) %>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
+                    <button class="btn btn-outline-light text-danger">
+                      <i class="fas fa-heart" style="color: #f50505;"></i>
+                      <%= book.favorites.count %>
+                    </button>
+                  <% end %>
+                <% else %>
+                  <%= link_to book_favorites_path(book), method: :post do %>
+                    <button class="btn btn-outline-light text-primary">
+                      <i class="fas fa-heart" style="color: #2b58a6;"></i>
+                      <%= book.favorites.count %>
+                    </button>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>
