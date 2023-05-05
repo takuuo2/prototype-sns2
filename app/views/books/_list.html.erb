@@ -1,0 +1,28 @@
+<div class = "pl-5 sidebar_content">
+  <h2>User info</h2>
+  <nav class="border-bottom border-secondary">
+    <%= image_tag user.get_profile_image(100,100) %>
+  </nav>
+  <nav class="border-bottom border-secondary">
+    <p class='font-weight-bold'>name　　　　　<%= user.name %></p>
+  </nav>
+  <p class='font-weight-bold'>introduction　　<%= user.introduction %></p>
+
+
+  <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog" style="color: #74777b;"></i>
+  <% end %>
+
+  <h2>New book</h2>
+  <%= form_with model: book do |f| %>
+    <p>Title</p>
+      <%= f.text_field :title %>
+    <p>Opinion</p>
+      <%= f.text_area :body%>
+    <%= f.submit 'Create Book' ,class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+
+
+
