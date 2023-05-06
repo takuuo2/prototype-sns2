@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 20,minimum: 2}
   validates :introduction, length: {maximum: 50}
 

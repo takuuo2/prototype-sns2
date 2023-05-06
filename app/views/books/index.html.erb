@@ -19,6 +19,8 @@
             <th scope="col"></th>
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
           <tbody>
             <% @books.each do |book| %>
@@ -45,6 +47,9 @@
                     </button>
                   <% end %>
                 <% end %>
+              </td>
+              <td>
+                <p>コメント数:<%= book.book_comments.count %></p>
               </td>
             </tr>
             <% end %>
