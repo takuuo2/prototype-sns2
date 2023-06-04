@@ -14,3 +14,7 @@ $ yarn install
 $ rails db:migrate
 $ rails db:seed
 $ rails s
+
+＊＊「Webpacker::Manifest::MissingEntryError」と表示される場合は下記コードも実行してください。
+
+yarn add @babel/plugin-proposal-private-methods
